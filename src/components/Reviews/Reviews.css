@@ -172,6 +172,16 @@
     -webkit-line-clamp: 4;
   }
 
+  /* Отключаем увеличение и остановку на мобильных */
+  .review-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .reviews__marquee:hover .reviews__track {
+    animation-play-state: running;
+  }
+
   .review-card__star {
     font-size: 0.75rem;
   }
@@ -194,5 +204,20 @@
   .review-card__text {
     font-size: 0.8rem;
     -webkit-line-clamp: 3;
+  }
+
+  /* Отключаем увеличение и остановку на мобильных */
+  .review-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .reviews__marquee:hover .reviews__track {
+    animation-play-state: running;
+  }
+
+  /* Запрет взаимодействия с карточками */
+  .review-card {
+    pointer-events: none;
   }
 }

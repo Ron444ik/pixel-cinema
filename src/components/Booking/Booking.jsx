@@ -285,7 +285,7 @@ const Booking = () => {
                     href="tel:+79807022342"
                     className="booking__contact-value booking__contact-value--link"
                   >
-                    +7 (980) 702-23-42
+                    +7 (980) 702-<span className="booking__phone-hidden">XX-XX</span>
                   </a>
                 </div>
               </div>

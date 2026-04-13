@@ -7,13 +7,6 @@ const MusicPlayer = () => {
   const audioRef = useRef(null)
   const startedRef = useRef(false)
 
-  // Обновляем громкость
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume * 2.5
-    }
-  }, [volume])
-
   const startMusic = useCallback(() => {
     if (startedRef.current) return
     startedRef.current = true
@@ -35,20 +28,35 @@ const MusicPlayer = () => {
     }
   }, [volume])
 
-  // Запуск музыки при скролле
+  // Запуск при любом взаимодействии (скролл, колёсико, тач, клавиатура)
   useEffect(() => {
+    let removed = false
+
     const handler = () => {
-      if (!startedRef.current) {
-        startMusic()
-      }
+      if (removed || startedRef.current) return
+      startMusic()
     }
 
-    window.addEventListener('scroll', handler, { passive: true })
+    document.addEventListener('wheel', handler, { passive: true })
+    document.addEventListener('touchmove', handler, { passive: true })
+    document.addEventListener('keydown', handler, { passive: true })
+    document.addEventListener('click', handler, { passive: true })
 
     return () => {
-      window.removeEventListener('scroll', handler)
+      removed = true
+      document.removeEventListener('wheel', handler)
+      document.removeEventListener('touchmove', handler)
+      document.removeEventListener('keydown', handler)
+      document.removeEventListener('click', handler)
     }
   }, [startMusic])
+
+  // Обновляем громкость
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume * 2.5
+    }
+  }, [volume])
 
   // Выключение/включение кнопкой
   const toggleMusic = useCallback(() => {

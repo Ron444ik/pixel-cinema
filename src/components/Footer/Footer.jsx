@@ -128,7 +128,7 @@ const Footer = () => {
                 <li className="footer__contact-item">
                   <FaPhone className="footer__contact-icon" />
                   <a href="tel:+79807022342" className="footer__contact-link">
-                    +7 (980) 702-23-42
+                    +7 (980) 702-<span className="footer__phone-hidden">XX-XX</span>
                   </a>
                 </li>
                 <li className="footer__contact-item">

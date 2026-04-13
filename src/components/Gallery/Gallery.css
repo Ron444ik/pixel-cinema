@@ -138,4 +138,26 @@
   .gallery__marquee {
     gap: 10px;
   }
+
+  /* Отключаем увеличение и остановку на мобильных */
+  .gallery__item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .gallery__marquee:hover .gallery__track {
+    animation-play-state: running;
+  }
+
+  /* Запрет масштабирования/перетаскивания фото */
+  .gallery__item {
+    pointer-events: none;
+  }
+
+  .gallery__item img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 }
