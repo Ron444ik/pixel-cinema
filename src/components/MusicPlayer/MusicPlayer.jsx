@@ -5,40 +5,6 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(0.15)
   const audioRef = useRef(null)
-  const startedRef = useRef(false)
-
-  const startMusic = useCallback(() => {
-    if (startedRef.current) return
-    startedRef.current = true
-
-    const audio = new Audio('/audio/music.mp3')
-    audio.loop = true
-    audio.volume = volume * 2.5
-    audioRef.current = audio
-
-    audio.play().then(() => {
-      setIsPlaying(true)
-    }).catch(() => {
-      startedRef.current = false
-    })
-  }, [volume])
-
-  // Запуск при первом клике пользователя
-  useEffect(() => {
-    let removed = false
-
-    const handler = () => {
-      if (removed) return
-      startMusic()
-    }
-
-    document.addEventListener('click', handler, { once: true })
-
-    return () => {
-      removed = true
-      document.removeEventListener('click', handler)
-    }
-  }, [startMusic])
 
   // Обновляем громкость
   useEffect(() => {
@@ -55,11 +21,16 @@ const MusicPlayer = () => {
       setIsPlaying(false)
     } else {
       const audio = new Audio('/audio/music.mp3')
-      audio.loop = true
+      audio.loop = false
       audio.volume = volume * 2.5
       audioRef.current = audio
       audio.play().catch(() => {})
       setIsPlaying(true)
+
+      audio.onended = () => {
+        audioRef.current = null
+        setIsPlaying(false)
+      }
     }
   }, [isPlaying, volume])
 
