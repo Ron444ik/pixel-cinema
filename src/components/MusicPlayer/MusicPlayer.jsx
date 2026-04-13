@@ -5,6 +5,7 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(0.15)
   const audioRef = useRef(null)
+  const startedRef = useRef(false)
 
   // Обновляем громкость
   useEffect(() => {
@@ -13,13 +14,50 @@ const MusicPlayer = () => {
     }
   }, [volume])
 
-  // Выключение/включение
+  const startMusic = useCallback(() => {
+    if (startedRef.current) return
+    startedRef.current = true
+
+    const audio = new Audio('/audio/music.mp3')
+    audio.loop = false
+    audio.volume = volume * 2.5
+    audioRef.current = audio
+
+    audio.play().then(() => {
+      setIsPlaying(true)
+    }).catch(() => {
+      startedRef.current = false
+    })
+
+    audio.onended = () => {
+      audioRef.current = null
+      setIsPlaying(false)
+    }
+  }, [volume])
+
+  // Запуск музыки при скролле
+  useEffect(() => {
+    const handler = () => {
+      if (!startedRef.current) {
+        startMusic()
+      }
+    }
+
+    window.addEventListener('scroll', handler, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handler)
+    }
+  }, [startMusic])
+
+  // Выключение/включение кнопкой
   const toggleMusic = useCallback(() => {
     if (isPlaying) {
       audioRef.current?.pause()
       audioRef.current = null
       setIsPlaying(false)
     } else {
+      startedRef.current = true
       const audio = new Audio('/audio/music.mp3')
       audio.loop = false
       audio.volume = volume * 2.5
