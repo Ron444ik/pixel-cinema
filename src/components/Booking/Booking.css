@@ -231,20 +231,6 @@
   text-decoration: underline;
 }
 
-/* Скрываем последние 4 цифры */
-.booking__phone-hidden {
-  color: var(--bg-primary);
-  background: var(--bg-primary);
-  padding: 0 2px;
-  border-radius: 2px;
-  user-select: none;
-}
-
-.booking__contact-value--link:hover .booking__phone-hidden {
-  color: var(--text-white);
-  background: transparent;
-}
-
 /* ===================================
    НИЖНИЙ БЛОК — КАРТА
    =================================== */

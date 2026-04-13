@@ -281,12 +281,9 @@ const Booking = () => {
                 <FaPhone className="booking__contact-icon" />
                 <div>
                   <p className="booking__contact-label">Телефон:</p>
-                  <a
-                    href="tel:+79807022342"
-                    className="booking__contact-value booking__contact-value--link"
-                  >
-                    +7 (980) 702-<span className="booking__phone-hidden">XX-XX</span>
-                  </a>
+                  <span className="booking__contact-value">
+                    +7 (980) 702-XX-XX
+                  </span>
                 </div>
               </div>
 

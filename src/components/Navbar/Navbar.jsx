@@ -39,7 +39,7 @@ const Navbar = () => {
           </ul>
 
           <div className="navbar__contacts">
-            <a href="tel:+79807022342" className="navbar__phone">+7 (980) 702-<span className="navbar__phone-hidden">XX-XX</span></a>
+            <span className="navbar__phone">+7 (980) 702-XX-XX</span>
             <div className="navbar__socials">
               <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="navbar__social-link"><FaTelegramPlane /></a>
               <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" className="navbar__social-link"><FaVk /></a>
@@ -63,7 +63,7 @@ const Navbar = () => {
           <li className="navbar__mobile-menu-item" onClick={() => scrollToSection('booking')}>Контакты</li>
         </ul>
         <div className="navbar__mobile-contacts">
-          <a href="tel:+79807022342" className="navbar__phone">+7 (980) 702-<span className="navbar__phone-hidden">XX-XX</span></a>
+          <span className="navbar__phone">+7 (980) 702-XX-XX</span>
           <div className="navbar__socials">
             <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="navbar__social-link"><FaTelegramPlane /></a>
             <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" className="navbar__social-link"><FaVk /></a>
