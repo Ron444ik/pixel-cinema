@@ -1,0 +1,276 @@
+/* ===================================
+   NAVBAR — ОСНОВНЫЕ СТИЛИ
+   =================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 0;
+  background: transparent;
+  border-bottom: 2px solid var(--accent-yellow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Тёмный фон при скролле */
+.navbar--scrolled {
+  background: rgba(13, 13, 13, 0.95);
+  box-shadow: 0 2px 20px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.navbar__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ===================================
+   ЛОГОТИП
+   =================================== */
+.navbar__logo {
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  color: var(--accent-yellow);
+  cursor: pointer;
+  text-shadow: var(--glow-yellow);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* ===================================
+   МЕНЮ (ДЕСКТОП)
+   =================================== */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.navbar__menu-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-white);
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+}
+
+.navbar__menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-yellow);
+  transition: width 0.3s ease;
+}
+
+.navbar__menu-item:hover {
+  color: var(--accent-yellow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.navbar__menu-item:hover::after {
+  width: 100%;
+}
+
+/* ===================================
+   КОНТАКТЫ (ДЕСКТОП)
+   =================================== */
+.navbar__contacts {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.navbar__phone {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-white);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar__phone:hover {
+  color: var(--accent-yellow);
+}
+
+.navbar__socials {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  color: var(--text-white);
+  border: 1px solid var(--border-glow);
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.navbar__social-link:hover {
+  color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   БУРГЕР
+   =================================== */
+.navbar__burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--accent-yellow);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1100;
+}
+
+/* ===================================
+   МОБИЛЬНОЕ МЕНЮ — ПОЛНЫЙ ЭКРАН
+   =================================== */
+.navbar__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0d0d0d;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  z-index: 99999;
+  padding: 70px 20px 20px;
+  overflow-y: auto;
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+.navbar__mobile-menu.active {
+  display: flex;
+}
+
+/* Кнопка закрытия */
+.navbar__mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 10;
+}
+
+.navbar__mobile-close:hover {
+  color: var(--accent-yellow);
+}
+
+.navbar__mobile-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar__mobile-menu-item {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  padding: 14px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+}
+
+.navbar__mobile-menu-item:hover {
+  color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow);
+}
+
+.navbar__mobile-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar__mobile-contacts .navbar__phone {
+  font-size: 0.8rem;
+}
+
+.navbar__mobile-contacts .navbar__socials {
+  justify-content: center;
+}
+
+/* ===================================
+   MEDIA QUERIES
+   =================================== */
+@media (max-width: 1024px) {
+  .navbar__menu {
+    gap: 20px;
+  }
+
+  .navbar__menu-item {
+    font-size: 0.9rem;
+  }
+
+  .navbar__phone {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__menu,
+  .navbar__contacts {
+    display: none;
+  }
+
+  .navbar__burger {
+    display: block;
+  }
+
+  .navbar__logo {
+    font-size: 1.1rem;
+  }
+
+  .navbar {
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar__logo {
+    font-size: 0.9rem;
+  }
+
+  .navbar__mobile-menu-item {
+    font-size: 0.7rem;
+  }
+}

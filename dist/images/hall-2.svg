@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#1a1a1a"/>
+  <rect x="100" y="100" width="600" height="300" fill="#0d0d0d" rx="10"/>
+  <text x="400" y="260" font-family="monospace" font-size="40" fill="#FFD700" text-anchor="middle">Средний зал</text>
+  <text x="400" y="310" font-family="monospace" font-size="20" fill="#aaaaaa" text-anchor="middle">100" экран | до 8 человек</text>
+</svg>

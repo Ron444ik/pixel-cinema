@@ -1,0 +1,337 @@
+/* ===================================
+   BOOKING — ОСНОВНЫЕ СТИЛИ
+   =================================== */
+.booking {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* ===================================
+   СООБЩЕНИЕ ОБ УСПЕХЕ
+   =================================== */
+.booking__success {
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: var(--glow-yellow);
+}
+
+/* ===================================
+   ВЕРХНИЙ БЛОК — ФОРМА + КОНТАКТЫ
+   =================================== */
+.booking__top {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ===================================
+   ФОРМА БРОНИРОВАНИЯ
+   =================================== */
+.booking__form {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-glow);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===================================
+   ГРУППА ПОЛЕЙ
+   =================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.form-required {
+  color: #ff4444;
+}
+
+/* ===================================
+   ПОЛЯ ВВОДА — КОМПАКТНЫЕ
+   =================================== */
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 8px 12px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-glow);
+  border-radius: 8px;
+  color: var(--text-white);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  outline: none;
+  height: 40px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-gray);
+}
+
+/* Жёлтая рамка при фокусе */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Стили ошибки */
+.form-input--error,
+.form-select--error {
+  border-color: #ff4444;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+}
+
+.form-error {
+  font-size: 0.7rem;
+  color: #ff4444;
+  margin-top: 2px;
+}
+
+/* ===================================
+   TEXTAREA
+   =================================== */
+.form-textarea {
+  height: auto;
+  min-height: 56px;
+  resize: vertical;
+}
+
+/* ===================================
+   РЯДЫ ПОЛЕЙ — 3 В РЯД
+   =================================== */
+.form-row--3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+/* ===================================
+   КНОПКА ОТПРАВКИ
+   =================================== */
+.booking__submit-btn {
+  padding: 12px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.booking__submit-btn:hover:not(:disabled) {
+  box-shadow: var(--glow-yellow-strong);
+  transform: translateY(-2px);
+}
+
+.booking__submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===================================
+   АНИМАЦИЯ ЗАГРУЗКИ
+   =================================== */
+.booking__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.booking__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(13, 13, 13, 0.3);
+  border-top-color: var(--bg-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================================
+   КОНТАКТНАЯ ИНФОРМАЦИЯ
+   =================================== */
+.booking__contacts {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-glow);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking__contacts-title {
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: var(--accent-yellow);
+  margin-bottom: 18px;
+  text-shadow: var(--glow-yellow);
+}
+
+.booking__contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.booking__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.booking__contact-icon {
+  font-size: 1.1rem;
+  color: var(--accent-yellow);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.booking__contact-label {
+  font-size: 0.75rem;
+  color: var(--text-gray);
+  margin-bottom: 4px;
+}
+
+.booking__contact-value {
+  font-size: 0.88rem;
+  color: var(--text-white);
+  font-weight: 500;
+}
+
+.booking__contact-value--link {
+  color: var(--accent-yellow);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.booking__contact-value--link:hover {
+  text-shadow: var(--glow-yellow);
+  text-decoration: underline;
+}
+
+/* ===================================
+   НИЖНИЙ БЛОК — КАРТА
+   =================================== */
+.booking__bottom {
+  margin-top: 30px;
+}
+
+.booking__map-title {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.booking__map {
+  width: 100%;
+  height: 300px;
+  border: 2px solid var(--border-glow);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking__map:hover {
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow);
+}
+
+.booking__map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(0.3) brightness(0.85) contrast(1.1);
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+/* Планшет */
+@media (max-width: 900px) {
+  .booking__top {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .booking__contacts {
+    order: 2;
+  }
+
+  .booking__form {
+    order: 1;
+  }
+
+  .form-row--3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking__map {
+    height: 280px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 600px) {
+  .booking__form {
+    padding: 15px;
+  }
+
+  .booking__contacts {
+    padding: 15px;
+  }
+
+  .booking__contacts-title {
+    font-size: 0.62rem;
+  }
+
+  .form-row--3 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    height: 38px;
+  }
+
+  .booking__submit-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .booking__map {
+    height: 220px;
+  }
+
+  .booking__map-title {
+    font-size: 0.62rem;
+  }
+}

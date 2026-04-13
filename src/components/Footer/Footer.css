@@ -1,0 +1,259 @@
+/* ===================================
+   FOOTER — ОСНОВНЫЕ СТИЛИ
+   =================================== */
+.footer {
+  padding: 60px 0 30px;
+  background: var(--bg-card);
+  border-top: 2px solid var(--border-glow);
+}
+
+/* ===================================
+   ОБЁРТКА FOOTER
+   =================================== */
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ===================================
+   ЛОГОТИП И СЛОГАН
+   =================================== */
+.footer__brand {
+  text-align: center;
+}
+
+.footer__logo {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+  margin-bottom: 10px;
+}
+
+.footer__slogan {
+  font-size: 1rem;
+  color: var(--text-gray);
+  text-align: center;
+}
+
+/* ===================================
+   ТРИ КОЛОНКИ
+   =================================== */
+.footer__columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ===================================
+   КОЛОНКА
+   =================================== */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__column-title {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+  margin-bottom: 5px;
+}
+
+/* ===================================
+   НАВИГАЦИЯ
+   =================================== */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__link {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 15px;
+}
+
+.footer__link::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent-yellow);
+  transition: transform 0.3s ease;
+}
+
+.footer__link:hover {
+  color: var(--accent-yellow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.footer__link:hover::before {
+  transform: translateX(3px);
+}
+
+/* ===================================
+   КОНТАКТЫ
+   =================================== */
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.footer__contact-icon {
+  color: var(--accent-yellow);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.footer__contact-link {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer__contact-link:hover {
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+}
+
+/* ===================================
+   СОЦСЕТИ
+   =================================== */
+.footer__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px solid var(--border-glow);
+  border-radius: 8px;
+  color: var(--text-white);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.footer__social-link svg {
+  font-size: 1.2rem;
+  color: var(--accent-yellow);
+}
+
+.footer__social-link:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow);
+  transform: translateX(5px);
+}
+
+/* ===================================
+   РАЗДЕЛИТЕЛЬ
+   =================================== */
+.footer__divider {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-yellow),
+    transparent
+  );
+  margin: 30px 0;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* ===================================
+   НИЖНЯЯ ЧАСТЬ (КОПИРАЙТ + КНОПКА)
+   =================================== */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+/* ===================================
+   КНОПКА «НАВЕРХ»
+   =================================== */
+.footer__scroll-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: var(--glow-yellow);
+  transition: all 0.3s ease;
+}
+
+.footer__scroll-top:hover {
+  background: var(--accent-dark);
+  box-shadow: var(--glow-yellow-strong);
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+/* Планшет */
+@media (max-width: 768px) {
+  .footer {
+    padding: 50px 0 25px;
+  }
+
+  .footer__columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer__logo {
+    font-size: 1.2rem;
+  }
+
+  .footer__column-title {
+    font-size: 0.6rem;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .footer__bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer__copyright {
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  .footer__scroll-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

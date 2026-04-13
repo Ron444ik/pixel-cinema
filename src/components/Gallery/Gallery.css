@@ -1,0 +1,141 @@
+/* ===================================
+   GALLERY — БЕГУЩАЯ СТРОКА ФОТО
+   =================================== */
+.gallery {
+  padding: 60px 0;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.gallery__title-wrapper {
+  margin-bottom: 30px;
+}
+
+/* ===================================
+   БЕГУЩАЯ СТРОКА (MARQUEE)
+   =================================== */
+.gallery__marquee {
+  display: flex;
+  gap: 20px;
+  overflow: visible;
+  padding: 30px 0;
+  position: relative;
+}
+
+/* Градиент по краям */
+.gallery__marquee::before,
+.gallery__marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery__marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.gallery__marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.gallery__track {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.gallery__track--reverse {
+  animation-direction: reverse;
+}
+
+/* Пауза при наведении на всю область */
+.gallery__marquee:hover .gallery__track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===================================
+   ФОТО
+   =================================== */
+.gallery__item {
+  width: 300px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--border-glow);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.gallery__item:hover {
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow-strong);
+  transform: scale(1.5);
+  z-index: 10;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.gallery__item:hover img {
+  filter: brightness(1);
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+@media (max-width: 768px) {
+  .gallery {
+    padding: 40px 0;
+  }
+
+  .gallery__item {
+    width: 250px;
+    height: 170px;
+  }
+
+  .gallery__track {
+    gap: 15px;
+  }
+
+  .gallery__marquee {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery__item {
+    width: 200px;
+    height: 140px;
+  }
+
+  .gallery__track {
+    gap: 10px;
+  }
+
+  .gallery__marquee {
+    gap: 10px;
+  }
+}

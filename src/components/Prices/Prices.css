@@ -1,0 +1,300 @@
+/* ===================================
+   PRICES — ПАКЕТЫ УСЛУГ
+   =================================== */
+.prices {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.prices__subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-gray);
+  margin-bottom: 35px;
+}
+
+/* ===================================
+   СЕТКА ПАКЕТОВ
+   =================================== */
+.packages__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+/* ===================================
+   КАРТОЧКА ПАКЕТА
+   =================================== */
+.package-card {
+  padding: 20px 18px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-glow);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.package-card:hover {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+/* ===================================
+   БЕЙДЖ ХИТ
+   =================================== */
+.package-card__popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: var(--glow-yellow);
+  white-space: nowrap;
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* ===================================
+   ИКОНКА
+   =================================== */
+.package-card__icon {
+  font-size: 2.2rem;
+  margin-bottom: 2px;
+  display: block;
+  animation: iconBounce 3s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+/* ===================================
+   НАЗВАНИЕ ПАКЕТА
+   =================================== */
+.package-card__name {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+  text-align: center;
+}
+
+/* ===================================
+   ДЛИТЕЛЬНОСТЬ
+   =================================== */
+.package-card__duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-white);
+  font-weight: 500;
+}
+
+.package-card__duration-icon {
+  font-size: 1rem;
+}
+
+/* ===================================
+   ЗАЛ
+   =================================== */
+.package-card__hall {
+  font-size: 0.78rem;
+  color: var(--text-gray);
+  margin-top: -3px;
+}
+
+/* ===================================
+   РАЗДЕЛИТЕЛЬ
+   =================================== */
+.package-card__divider {
+  width: 40px;
+  height: 2px;
+  background: var(--accent-yellow);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* ===================================
+   ЧТО ВКЛЮЧЕНО
+   =================================== */
+.package-card__includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.package-card__include-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-gray);
+}
+
+.package-card__check {
+  color: var(--accent-yellow);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ===================================
+   ЦЕНА
+   =================================== */
+.package-card__price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.package-card__old-price {
+  font-size: 0.82rem;
+  color: var(--text-gray);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.package-card__price-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.package-card__counter {
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+}
+
+.package-card__currency {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+/* ===================================
+   КНОПКА
+   =================================== */
+.package-card__btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.82rem;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.package-card__btn:hover {
+  box-shadow: var(--glow-yellow-strong);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   БЛОК ИНФОРМАЦИИ ВНИЗУ
+   =================================== */
+.prices__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 25px;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
+}
+
+.prices__info-text {
+  font-size: 1.05rem;
+  color: var(--text-white);
+}
+
+.prices__info-text strong {
+  color: var(--accent-yellow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+/* Ноутбук */
+@media (max-width: 1024px) {
+  .packages__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+/* Планшет */
+@media (max-width: 768px) {
+  .packages__grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 15px;
+  }
+
+  .package-card {
+    padding: 18px 15px;
+  }
+
+  .package-card__counter {
+    font-size: 1.3rem;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .package-card {
+    padding: 15px 12px;
+  }
+
+  .package-card__icon {
+    font-size: 1.8rem;
+  }
+
+  .package-card__name {
+    font-size: 0.55rem;
+  }
+
+  .package-card__counter {
+    font-size: 1.1rem;
+  }
+
+  .prices__info {
+    padding: 18px 12px;
+  }
+
+  .prices__info-text {
+    font-size: 0.88rem;
+  }
+}

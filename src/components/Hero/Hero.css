@@ -1,0 +1,441 @@
+﻿/* ===================================
+   HERO — ОСНОВНЫЕ СТИЛИ
+   =================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px 40px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+}
+
+/* ===================================
+   АНИМИРОВАННЫЕ ПИКСЕЛИ НА ФОНЕ (CSS)
+   =================================== */
+.hero__pixels-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero__pixel {
+  position: absolute;
+  bottom: -10px;
+  background: var(--accent-yellow);
+  border-radius: 0;
+  animation: pixelFloat linear infinite;
+}
+
+@keyframes pixelFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   ТЁМНЫЙ OVERLAY
+   =================================== */
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* ===================================
+   КОНТЕНТ HERO — растянутый по высоте
+   =================================== */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: clamp(15px, 2.5vh, 30px);
+}
+
+/* ===================================
+   1. ПОДЗАГОЛОВОК (МЕЛКИЙ ТЕКСТ СВЕРХУ)
+   =================================== */
+.hero__subtitle {
+  font-family: var(--font-text);
+  font-size: clamp(0.6rem, 1.2vh, 0.85rem);
+  font-weight: 500;
+  color: var(--text-gray);
+  letter-spacing: clamp(2px, 0.4vw, 5px);
+  text-transform: uppercase;
+  margin: 0 0 clamp(8px, 1.5vh, 18px) 0;
+}
+
+/* ===================================
+   2. ЗАГОЛОВОК PIXEL С GLITCH АНИМАЦИЕЙ
+   =================================== */
+.hero__title {
+  font-family: var(--font-pixel);
+  font-size: clamp(3rem, 10vh, 7rem);
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow-strong);
+  margin: 0 0 clamp(12px, 2.5vh, 30px) 0;
+  line-height: 1.2;
+  animation: glitch 2s infinite;
+}
+
+/* ===================================
+   3. СЛОГАН — белый + жёлтый акцент
+   =================================== */
+.hero__slogan {
+  font-family: var(--font-text);
+  font-size: clamp(1rem, 2vh, 1.4rem);
+  font-weight: 400;
+  color: var(--text-white);
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: 0 0 clamp(6px, 1.2vh, 15px) 0;
+  line-height: 1.4;
+}
+
+.hero__slogan-white {
+  color: var(--text-white);
+}
+
+.hero__slogan-highlight {
+  color: var(--accent-yellow);
+  font-weight: 600;
+}
+
+/* ===================================
+   4. КНОПКА CTA С МЯГКОЙ ПУЛЬСАЦИЕЙ
+   =================================== */
+.hero__cta-btn {
+  padding: clamp(10px, 1.5vh, 18px) clamp(25px, 3vw, 50px);
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.5vh, 1.1rem);
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+  animation: softPulse 3s ease-in-out infinite;
+  border: none;
+  cursor: pointer;
+  margin-bottom: clamp(20px, 4vh, 50px);
+}
+
+.hero__cta-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px #FFD700, 0 0 50px rgba(255, 215, 0, 0.3);
+}
+
+.hero__cta-btn:active {
+  transform: translateY(-1px);
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.2);
+  }
+}
+
+/* ===================================
+   6. ТРИ МЕТРИКИ — 3 КОЛОНКИ С РАЗДЕЛИТЕЛЯМИ
+   =================================== */
+.hero__metrics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  max-width: clamp(400px, 45vw, 600px);
+  margin: 0 auto clamp(18px, 3.5vh, 40px) auto;
+}
+
+/* Каждая метрика — отдельная колонка */
+.hero__metric {
+  flex: 1;
+  text-align: center;
+  padding: 0 clamp(10px, 1.5vw, 25px);
+}
+
+/* Число в метрике */
+.hero__metric-value {
+  font-family: var(--font-pixel);
+  font-size: clamp(1.3rem, 3vh, 2.2rem);
+  white-space: nowrap;
+  color: var(--accent-yellow);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+}
+
+/* Подпись под числом */
+.hero__metric-label {
+  font-family: var(--font-text);
+  font-size: clamp(0.55rem, 1vh, 0.75rem);
+  opacity: 0.5;
+  margin-top: clamp(2px, 0.5vh, 6px);
+  white-space: nowrap;
+}
+
+/* Разделитель между метриками */
+.hero__metric-divider {
+  width: 1px;
+  height: clamp(25px, 4vh, 45px);
+  background: rgba(255, 215, 0, 0.2);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ===================================
+   7. ИКОНКИ УСЛУГ — ЭМОДЗИ
+   =================================== */
+.hero__tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.8vw, 14px);
+  margin-bottom: 0;
+}
+
+.hero__tag-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: clamp(55px, 5vw, 85px);
+  padding: clamp(8px, 1.2vh, 16px);
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.hero__tag-card:hover {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.hero__tag-emoji {
+  font-size: clamp(1.4rem, 2.5vh, 2rem);
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.hero__tag-card:hover .hero__tag-emoji {
+  transform: scale(1.2);
+}
+
+.hero__tag-text {
+  font-family: var(--font-pixel);
+  font-size: clamp(0.5rem, 0.9vh, 0.7rem);
+  color: var(--accent-yellow);
+  text-align: center;
+  line-height: 1.3;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.hero__tag-card:hover .hero__tag-text {
+  opacity: 1;
+}
+
+/* ===================================
+   ПАРАЛЛАКС ЭФФЕКТ (через CSS)
+   =================================== */
+@media (min-width: 769px) {
+  .hero {
+    background-attachment: fixed;
+  }
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+
+/* Планшет */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 75px;
+    padding-bottom: 35px;
+  }
+
+  .hero__content {
+    gap: clamp(12px, 2vh, 25px);
+  }
+
+  .hero__metric {
+    padding: 0 clamp(8px, 1vw, 15px);
+  }
+
+  .hero__metric-divider {
+    height: clamp(20px, 3vh, 35px);
+  }
+
+  .hero__tag-card {
+    min-width: clamp(50px, 4.5vw, 75px);
+    padding: clamp(8px, 1vh, 12px);
+  }
+
+  .hero__tag-emoji {
+    font-size: clamp(1.2rem, 2vh, 1.7rem);
+  }
+
+  .hero__tag-text {
+    font-size: clamp(0.4rem, 0.8vh, 0.55rem);
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+
+  .hero__content {
+    gap: clamp(10px, 2vh, 20px);
+  }
+
+  /* Метрики в одну строку на мобильных */
+  .hero__metrics {
+    flex-direction: row;
+    gap: 0;
+    max-width: 100%;
+    margin-bottom: 12px;
+    margin-top: clamp(15px, 3vh, 30px);
+  }
+
+  .hero__metric {
+    padding: 0 4px;
+  }
+
+  .hero__metric-divider {
+    height: 25px;
+  }
+
+  .hero__metric-value {
+    font-size: clamp(0.6rem, 3.5vw, 1.1rem);
+    letter-spacing: -0.08em;
+  }
+
+  .hero__metric-label {
+    font-size: clamp(0.4rem, 2vw, 0.55rem);
+  }
+
+  .hero__cta-btn {
+    padding: clamp(10px, 2vh, 16px) clamp(20px, 5vw, 35px);
+    width: 90%;
+    max-width: 300px;
+    margin-bottom: 0;
+    margin-top: clamp(8px, 1.5vh, 18px);
+  }
+
+  .hero__tags {
+    gap: 8px;
+  }
+
+  .hero__tag-card {
+    min-width: clamp(60px, 18vw, 80px);
+    padding: clamp(6px, 1vh, 10px);
+  }
+
+  .hero__tag-emoji {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+  }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 20px;
+  }
+
+  .hero__content {
+    gap: clamp(8px, 1.8vh, 16px);
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 8vh, 5rem);
+  }
+
+  /* Иконки в сетку 3×2 */
+  .hero__tags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 0;
+  }
+
+  .hero__tag-card {
+    min-width: unset;
+    padding: clamp(6px, 1vh, 10px) clamp(4px, 1vw, 8px);
+    gap: 4px;
+  }
+
+  .hero__tag-emoji {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .hero__tag-text {
+    font-size: clamp(0.35rem, 0.8vh, 0.5rem);
+  }
+
+  .hero__metrics {
+    margin-bottom: 10px;
+  }
+
+  .hero__metric {
+    padding: 0 3px;
+  }
+
+  .hero__metric-divider {
+    height: 20px;
+  }
+
+  .hero__metric-value {
+    font-size: clamp(0.55rem, 3.2vw, 0.95rem);
+    letter-spacing: -0.1em;
+  }
+
+  .hero__metric-label {
+    font-size: clamp(0.35rem, 1.8vw, 0.5rem);
+  }
+}

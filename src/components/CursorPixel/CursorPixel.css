@@ -1,0 +1,25 @@
+/* ===================================
+   CURSOR PIXEL — ЖЁЛТЫЙ ПИКСЕЛЬ ЗА КУРСОРОМ
+   =================================== */
+.cursor-pixel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-yellow);
+  box-shadow: 0 0 10px var(--accent-yellow), 0 0 20px rgba(255, 215, 0, 0.5);
+  z-index: 99999;
+  pointer-events: none;
+  image-rendering: pixelated;
+  /* Начальная позиция за экраном */
+  transform: translate(-100px, -100px);
+  transition: none;
+}
+
+/* Скрываем на мобильных (нет курсора) */
+@media (max-width: 768px) {
+  .cursor-pixel {
+    display: none;
+  }
+}

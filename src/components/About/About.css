@@ -1,0 +1,120 @@
+/* ===================================
+   ABOUT — ОСНОВНЫЕ СТИЛИ
+   =================================== */
+.about {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* ===================================
+   ОПИСАНИЕ
+   =================================== */
+.about__description {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+}
+
+.about__text strong {
+  color: var(--accent-yellow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.about__text em {
+  color: var(--text-white);
+}
+
+/* ===================================
+   ПРЕИМУЩЕСТВА — СЕТКА
+   =================================== */
+.about__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ===================================
+   КАРТОЧКА ПРЕИМУЩЕСТВА
+   =================================== */
+.about__feature {
+  padding: 25px 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about__feature:hover {
+  border-color: var(--accent-yellow);
+  box-shadow: var(--glow-yellow);
+}
+
+.about__feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.about__feature-title {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--glow-yellow);
+}
+
+.about__feature-text {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+/* Планшет */
+@media (max-width: 900px) {
+  .about__features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .about__text {
+    font-size: 1rem;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 600px) {
+  .about__features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about__feature {
+    padding: 20px 15px;
+  }
+
+  .about__feature-icon {
+    font-size: 2rem;
+  }
+
+  .about__feature-title {
+    font-size: 0.6rem;
+  }
+
+  .about__text {
+    font-size: 0.95rem;
+  }
+}

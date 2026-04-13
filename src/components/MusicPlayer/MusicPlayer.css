@@ -1,0 +1,134 @@
+/* ===================================
+   MUSIC PLAYER — ПИКСЕЛЬНАЯ КНОПКА
+   =================================== */
+.music-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* ===================================
+   КНОПКА ВКЛ/ВЫКЛ
+   =================================== */
+.music-player__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-glow);
+  border-radius: 0;
+  color: var(--accent-yellow);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s steps(2);
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.music-player__btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.music-player__btn:active {
+  transform: scale(0.95);
+}
+
+/* Когда играет */
+.music-player--playing .music-player__btn {
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: musicPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  }
+}
+
+.music-player__text {
+  letter-spacing: 1px;
+}
+
+/* ===================================
+   ПОЛЗУНОК ГРОМКОСТИ
+   =================================== */
+.music-player__volume {
+  display: flex;
+  align-items: center;
+}
+
+.music-player__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.music-player__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-yellow);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.music-player__slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-yellow);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* ===================================
+   POSITION IN NAVBAR
+   =================================== */
+.navbar__music {
+  display: flex;
+  align-items: center;
+}
+
+/* На десктопе */
+@media (min-width: 769px) {
+  .navbar__music {
+    margin-left: 15px;
+  }
+}
+
+/* На мобильных */
+@media (max-width: 768px) {
+  .music-player__btn {
+    padding: 6px 12px;
+    font-size: 0.45rem;
+  }
+
+  .music-player__slider {
+    width: 60px;
+  }
+
+  .navbar__music {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,198 @@
+/* ===================================
+   REVIEWS — БЕГУЩАЯ СТРОКА
+   =================================== */
+.reviews {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* ===================================
+   БЕГУЩАЯ СТРОКА (MARQUEE)
+   =================================== */
+.reviews__marquee {
+  overflow: visible;
+  padding: 40px 0;
+  position: relative;
+}
+
+/* Градиент по краям через псевдоэлементы */
+.reviews__marquee::before,
+.reviews__marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reviews__marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.reviews__marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.reviews__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: reviewsScroll 60s linear infinite;
+}
+
+/* Пауза при наведении на всю область */
+.reviews__marquee:hover .reviews__track {
+  animation-play-state: paused;
+}
+
+@keyframes reviewsScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.reviews__item {
+  width: 320px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* ===================================
+   КАРТОЧКА ОТЗЫВА — КОМПАКТНАЯ
+   =================================== */
+.review-card {
+  padding: 20px 18px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 180px;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+}
+
+.review-card:hover {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.5);
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
+}
+
+/* ===================================
+   ШАПКА (ИМЯ + РЕЙТИНГ)
+   =================================== */
+.review-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-card__name {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  color: var(--accent-yellow);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===================================
+   ЗВЁЗДЫ
+   =================================== */
+.review-card__stars {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.review-card__star {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.review-card__star--active {
+  color: var(--accent-yellow);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+/* ===================================
+   ТЕКСТ ОТЗЫВА
+   =================================== */
+.review-card__text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-white);
+  font-style: italic;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===================================
+   ДАТА
+   =================================== */
+.review-card__date {
+  font-size: 0.75rem;
+  color: var(--text-gray);
+  text-align: right;
+}
+
+/* ===================================
+   MEDIA QUERIES — АДАПТИВНОСТЬ
+   =================================== */
+@media (max-width: 768px) {
+  .reviews__item {
+    width: 280px;
+  }
+
+  .review-card {
+    padding: 16px 14px;
+    min-height: 160px;
+  }
+
+  .review-card__name {
+    font-size: 0.55rem;
+  }
+
+  .review-card__text {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .review-card__star {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews__item {
+    width: 260px;
+  }
+
+  .reviews__track {
+    gap: 15px;
+  }
+
+  .review-card {
+    padding: 14px 12px;
+    min-height: 150px;
+  }
+
+  .review-card__text {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+  }
+}
