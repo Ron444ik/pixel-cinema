@@ -5,7 +5,6 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(0.15)
   const audioRef = useRef(null)
-  const shootRef = useRef(null)
   const startedRef = useRef(false)
 
   const startMusic = useCallback(() => {
@@ -13,8 +12,8 @@ const MusicPlayer = () => {
     startedRef.current = true
 
     const audio = new Audio('/audio/music.mp3')
-    audio.loop = false
-    audio.volume = 0.375 // volume * 2.5 при дефолте 0.15
+    audio.loop = true
+    audio.volume = volume * 2.5
     audioRef.current = audio
 
     audio.play().then(() => {
@@ -22,14 +21,9 @@ const MusicPlayer = () => {
     }).catch(() => {
       startedRef.current = false
     })
+  }, [volume])
 
-    audio.onended = () => {
-      audioRef.current = null
-      setIsPlaying(false)
-    }
-  }, [])
-
-  // Запуск при любом действии пользователя
+  // Запуск при первом клике пользователя
   useEffect(() => {
     let removed = false
 
@@ -38,40 +32,13 @@ const MusicPlayer = () => {
       startMusic()
     }
 
-    document.addEventListener('mousedown', handler)
-    document.addEventListener('touchstart', handler)
-    window.addEventListener('wheel', handler)
-    window.addEventListener('keydown', handler)
+    document.addEventListener('click', handler, { once: true })
 
     return () => {
       removed = true
-      document.removeEventListener('mousedown', handler)
-      document.removeEventListener('touchstart', handler)
-      window.removeEventListener('wheel', handler)
-      window.removeEventListener('keydown', handler)
+      document.removeEventListener('click', handler)
     }
   }, [startMusic])
-
-  // Выстрел при клике
-  useEffect(() => {
-    const shoot = new Audio('/audio/shoot.mp3')
-    shoot.volume = 0.3
-    shoot.preload = 'auto'
-    shootRef.current = shoot
-
-    const handleClick = () => {
-      if (shootRef.current) {
-        const clone = shootRef.current.cloneNode()
-        clone.volume = 0.3
-        clone.play().catch(() => {})
-      }
-    }
-    window.addEventListener('click', handleClick)
-    return () => {
-      window.removeEventListener('click', handleClick)
-      shoot.src = ''
-    }
-  }, [])
 
   // Обновляем громкость
   useEffect(() => {
@@ -87,19 +54,12 @@ const MusicPlayer = () => {
       audioRef.current = null
       setIsPlaying(false)
     } else {
-      if (!startedRef.current) {
-        startedRef.current = true
-      }
       const audio = new Audio('/audio/music.mp3')
-      audio.loop = false
+      audio.loop = true
       audio.volume = volume * 2.5
       audioRef.current = audio
       audio.play().catch(() => {})
       setIsPlaying(true)
-      audio.onended = () => {
-        audioRef.current = null
-        setIsPlaying(false)
-      }
     }
   }, [isPlaying, volume])
 
